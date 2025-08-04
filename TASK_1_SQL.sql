@@ -1,0 +1,32 @@
+use library;
+## TABLE CREATED FOR BOOKS
+CREATE TABLE book(
+BookID INT PRIMARY KEY,
+Title VARCHAR(50),
+Author VARCHAR(30),
+Published_Year INT,
+Genre INT,
+Available_copies INT
+);
+
+##TABLE CREATED FOR MEMBER TABLE
+CREATE TABLE Members(
+Member_ID INT PRIMARY KEY,
+Member_Name VARCHAR(20) NOT NULL,
+Email VARCHAR(30) UNIQUE,
+Join_Date DATE NOT NULL
+);
+
+##CREATE TABLE FOR BORROWING BOOKS
+CREATE TABLE Borrow_Books(
+Borrow_ID INT PRIMARY KEY,
+BookID INT,
+Member_ID INT,
+Borrow_Date DATE,
+Return_Date DATE,
+FOREIGN KEY(BookID)REFERENCES book(BookID),
+FOREIGN KEY(Member_ID)REFERENCES Members(Member_ID)
+);
+
+
+
